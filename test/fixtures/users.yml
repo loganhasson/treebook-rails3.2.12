@@ -3,3 +3,9 @@ logan:
   last_name: "Hasson"
   email: "logan.hasson@gmail.com"
   profile_name: "loganhasson"
+
+jim:
+  first_name: "Jim"
+  last_name: "Hoskins"
+  email: "jim@teamtreehouse.com"
+  profile_name: "jimhoskins"
