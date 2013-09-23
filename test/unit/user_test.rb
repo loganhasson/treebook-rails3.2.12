@@ -48,9 +48,9 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "that creating friendships on a user works" do
-    users(:logan).friends << users(:mike)
-    users(:logan).friends.reload
-    assert users(:logan).friends.include?(users(:mike))
+    users(:logan).pending_friends << users(:mike)
+    users(:logan).pending_friends.reload
+    assert users(:logan).pending_friends.include?(users(:mike))
   end
 
   test "that no error is raised when trying to access a user's friends" do
@@ -61,7 +61,11 @@ class UserTest < ActiveSupport::TestCase
 
   test "that creating a friendship based on user id and friend id works" do
     UserFriendship.create user_id: users(:logan).id, friend_id: users(:mike).id
-    assert users(:logan).friends.include?(users(:mike))
+    assert users(:logan).pending_friends.include?(users(:mike))
+  end
+
+  test "that calling to_param on a user returns the profile name" do
+    assert_equal 'loganhasson', users(:logan).to_param
   end
 
 end
